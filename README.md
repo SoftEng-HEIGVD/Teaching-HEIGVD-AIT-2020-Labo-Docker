@@ -415,7 +415,7 @@ Let's start by creating a folder called `service` in `ha` and `webapp`
 folders. You can use the above commands :
 
 ```bash
-mkdir -p /ha/services/ha /webapp/services/node
+mkdir -p ha/services/ha webapp/services/node
 ```
 
 You should have the following folder structure:
