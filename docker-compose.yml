@@ -38,10 +38,14 @@ services :
          - 80:80
          - 1936:1936
          - 9999:9999
+         - 7946:7946
+         - 7373:7373
        expose:
          - 80
          - 1936
          - 9999
+         - 7946
+         - 7373
        networks:
          heig:
            ipv4_address: ${HA_PROXY_IP}
