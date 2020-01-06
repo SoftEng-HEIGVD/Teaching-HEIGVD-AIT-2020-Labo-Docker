@@ -63,5 +63,3 @@ ENV ROLE balancer
 # This will start S6 as our main process in our container
 ENTRYPOINT ["/init"]
 
-# Command executed when the container starts
-CMD [ "/scripts/run.sh" ]

@@ -54,5 +54,3 @@ ENV ROLE backend
 # TODO: [S6] Replace the following instruction
 # This will start S6 as our main process in our container
 ENTRYPOINT ["/init"]
-# Command executed when the container starts
-CMD [ "/scripts/run.sh" ]
