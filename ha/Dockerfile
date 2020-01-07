@@ -6,7 +6,7 @@ MAINTAINER Francine Youndzo <francine.youndzokengne@heig-vd.ch>
 
 # Install some tools
 # TODO: [HB] Update to install required tool to install NodeJS
-RUN apt-get update && apt-get -y install wget curl vim iputils-ping rsyslog
+RUN apt-get update && apt-get -y install wget curl vim iputils-ping rsyslog \ xz-utils
 
 # Download and install S6 overlay
 RUN curl -sSLo /tmp/s6.tar.gz https://github.com/just-containers/s6-overlay/releases/download/v1.17.2.0/s6-overlay-amd64.tar.gz && tar xzf /tmp/s6.tar.gz -C / && rm -f /tmp/s6.tar.gz
@@ -19,16 +19,27 @@ RUN mkdir /opt/bin \
     && chmod 755 /opt/bin/serf \
     && rm -f /tmp/serf.gz
 
-# TODO: [HB] Install NodeJS
+# # Install NodeJS
+RUN curl -sSLo /tmp/node.tar.xz https://nodejs.org/dist/v4.4.4/node-v4.4.4-linux-x64.tar.xz \
+  && tar -C /usr/local --strip-components 1 -xf /tmp/node.tar.xz \
+  && rm -f /tmp/node.tar.xz
 
-# TODO: [HB] Install Handlebars
+# Install the handlebars-cmd node module and its dependencies
+RUN npm install -g handlebars-cmd
+
+# Copy events handlers scripts and make them executable
+RUN mkdir /serf-handlers
+COPY scripts/ /serf-handlers
+RUN chmod +x /serf-handlers/member-join.sh
+RUN chmod +x /serf-handlers/member-leave.sh
 
 # TODO: [S6] Replace the two following instructions
 # Copy the S6 service and make the run script executable
 COPY services/ha /etc/services.d/ha
 RUN chmod +x /etc/services.d/ha/run
+
 # Copy all the scripts and make them executable
-COPY scripts/ /scripts/
+COPY scripts /scripts/
 RUN chmod +x /scripts/*.sh
 
 # TODO: [Serf] Add Serf S6 setup
@@ -43,6 +54,8 @@ COPY config/haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 COPY config/rsyslogd.cfg /etc/rsyslog.d/49-haproxy.conf
 
 # TODO: [HB] Copy the haproxy configuration template
+RUN mkdir config
+COPY config/haproxy.cfg.hb /config
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
