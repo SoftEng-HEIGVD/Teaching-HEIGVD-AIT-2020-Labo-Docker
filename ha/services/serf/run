@@ -35,6 +35,9 @@ trap sigterm SIGTERM
 # We build the Serf command to run the agent
 COMMAND="/opt/bin/serf agent"
 COMMAND="$COMMAND --join ha"
+COMMAND="$COMMAND --replay"
+COMMAND="$COMMAND --event-handler member-join=/serf-handlers/member-join.sh"
+COMMAND="$COMMAND --event-handler member-leave,member-failed=/serf-handlers/member-leave.sh"
 COMMAND="$COMMAND --tag role=$ROLE"
 
 # ##############################################################################

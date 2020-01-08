@@ -6,7 +6,49 @@
 [cont-init.d] done.
 [services.d] starting services
 [services.d] done.
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '2798a8635c40'
+         Bind addr: '0.0.0.0:7946'
+          RPC addr: '127.0.0.1:7373'
+         Encrypted: false
+          Snapshot: false
+           Profile: lan
+==> Joining cluster...(replay: false)
+==> dial tcp 192.168.42.42:7946: getsockopt: connection refused
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '2798a8635c40'
+         Bind addr: '0.0.0.0:7946'
+          RPC addr: '127.0.0.1:7373'
+         Encrypted: false
+          Snapshot: false
+           Profile: lan
+==> Joining cluster...(replay: false)
+==> dial tcp 192.168.42.42:7946: getsockopt: connection refused
 Application started
-HEAD / 200 12.075 ms - 129
-HEAD / 200 12.670 ms - 129
-HEAD / 200 1.394 ms - 129
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '2798a8635c40'
+         Bind addr: '0.0.0.0:7946'
+          RPC addr: '127.0.0.1:7373'
+         Encrypted: false
+          Snapshot: false
+           Profile: lan
+==> Joining cluster...(replay: false)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2020/01/07 23:24:06 [INFO] agent: Serf agent starting
+    2020/01/07 23:24:06 [INFO] serf: EventMemberJoin: 2798a8635c40 192.168.42.22
+    2020/01/07 23:24:06 [INFO] agent: joining: [ha] replay: false
+    2020/01/07 23:24:06 [INFO] serf: EventMemberJoin: 8035305d8c1b 192.168.42.11
+    2020/01/07 23:24:06 [INFO] serf: EventMemberJoin: 6ca3eee301e3 192.168.42.42
+    2020/01/07 23:24:06 [INFO] agent: joined: 1 nodes

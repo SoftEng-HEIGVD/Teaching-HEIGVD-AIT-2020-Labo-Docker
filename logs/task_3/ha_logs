@@ -1,0 +1,35 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+[services.d] done.
+/opt/bin/serf agent --join ha --replay --event-handler member-join=/serf-handlers/member-join.sh --event-handler member-leave,member-failed=/serf-handlers/member-leave.sh --tag role=balancer
+[WARNING] 006/234017 (164) : Server nodes/s1 is DOWN, reason: Layer4 connection problem, info: "Connection refused", check duration: 0ms. 1 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '50e68d33288f'
+         Bind addr: '0.0.0.0:7946'
+          RPC addr: '127.0.0.1:7373'
+         Encrypted: false
+          Snapshot: false
+           Profile: lan
+==> Joining cluster...(replay: true)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2020/01/07 23:40:17 [INFO] agent: Serf agent starting
+    2020/01/07 23:40:17 [INFO] serf: EventMemberJoin: 50e68d33288f 192.168.42.2
+    2020/01/07 23:40:17 [INFO] agent: joining: [ha] replay: true
+    2020/01/07 23:40:17 [INFO] agent: joined: 1 nodes
+[WARNING] 006/234018 (164) : Server nodes/s2 is DOWN, reason: Layer4 connection problem, info: "Connection refused", check duration: 0ms. 0 active and 0 backup servers left. 0 sessions active, 0 requeued, 0 remaining in queue.
+[ALERT] 006/234018 (164) : backend 'nodes' has no server available!
+    2020/01/07 23:40:18 [INFO] agent: Received event: member-join
+    2020/01/07 23:40:27 [INFO] serf: EventMemberJoin: 5b8103f84d07 192.168.42.3
+    2020/01/07 23:40:28 [INFO] agent: Received event: member-join
+    2020/01/07 23:40:35 [INFO] serf: EventMemberJoin: 930e21af1c11 192.168.42.4
+    2020/01/07 23:40:36 [INFO] agent: Received event: member-join

@@ -1,0 +1,2 @@
+cbd425ab2698        teaching-heigvd-ait-2019-labo-docker_haproxy   "/init"             20 minutes ago      Up 20 minutes       0.0.0.0:80->80/tcp, 7373/tcp, 0.0.0.0:1936->1936/tcp, 0.0.0.0:9999->9999/tcp, 7946/tcp   ha
+944364e31b67        teaching-heigvd-ait-2019-labo-docker_webapp2   "/init"             20 minutes ago      Up 20 minutes       7373/tcp, 7946/tcp, 0.0.0.0:4001->3000/tcp                                               s2
