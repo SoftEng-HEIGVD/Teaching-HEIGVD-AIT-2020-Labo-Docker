@@ -314,12 +314,12 @@ instruction:
 
 ```
 # Download and install S6 overlay
-RUN curl -sSLo /tmp/s6.tar.gz https://github.com/just-containers/s6-overlay/releases/download/v1.17.2.0/s6-overlay-amd64.tar.gz \
+RUN curl -sSLo /tmp/s6.tar.gz https://github.com/just-containers/s6-overlay/releases/download/v2.1.0.2/s6-overlay-amd64.tar.gz \
   && tar xzf /tmp/s6.tar.gz -C / \
   && rm -f /tmp/s6.tar.gz
 ```
 
-Take the opportunity to change the `MAINTAINER` of the image by your
+Take the opportunity to change the `LABEL` of the image by your
 name and email.  Replace in both Docker files the `TODO: [GEN] Replace
 with your name and email`.
 
@@ -411,7 +411,7 @@ To remedy to this situation, we will prepare the starting scripts for
 automatically taken into account and our applications will be
 available again.
 
-Let's start by creating a folder called `service` in `ha` and `webapp`
+Let's start by creating a folder called `services` in `ha` and `webapp`
 folders. You can use the above commands :
 
 ```bash
@@ -441,7 +441,7 @@ We need to copy the `run.sh` scripts as `run` files in the service
 directories.  You can achieve that by the following commands :
 
 ```bash
-cp /ha/scripts/run.sh /ha/services/ha/run && chmod +x /ha/services/ha/run
+cp cp ./ha/scripts/run.sh ./ha/services/ha/run && chmod +x ./ha/services/ha/run
 cp /webapp/scripts/run.sh /webapp/services/node/run && chmod +x /webapp/services/node/run
 ```
 
@@ -566,7 +566,7 @@ instruction:
 ```
 # Install serf (for decentralized cluster membership: https://www.serf.io/)
 RUN mkdir /opt/bin \
-    && curl -sSLo /tmp/serf.gz https://releases.hashicorp.com/serf/0.7.0/serf_0.7.0_linux_amd64.zip \
+    && curl -sSLo /tmp/serf.gz https://releases.hashicorp.com/serf/0.8.2/serf_0.8.2_linux_amd64.zip \
     && gunzip -c /tmp/serf.gz > /opt/bin/serf \
     && chmod 755 /opt/bin/serf \
     && rm -f /tmp/serf.gz
@@ -597,7 +597,7 @@ do that with the creation of the service folder in `ha/services` and
 `webapp/services`. Use the following command to do that.
 
 ```bash
-mkdir /ha/services/serf /webapp/services/serf
+mkdir ./ha/services/serf ./webapp/services/serf
 ```
 
 You should have the following folders structure:
@@ -626,13 +626,13 @@ achieve that by the following commands:
 
 ```bash
 touch /ha/services/serf/run && chmod +x /ha/services/serf/run
-touch /webapp/services/serf/run && chmod +x /webapp/services/serf/run
+touch ./webapp/services/serf/run && chmod +x ./webapp/services/serf/run
 ```
 
 In the `ha/services/serf/run` file, add the following script. This
 will start and enable the capabilities of `Serf` on the load
 balancer. You can ignore the tricky part of the script about process
-management. You can look at the comments and ask us fore more info if
+management. You can look at the comments and ask us for more info if
 you are interested.
 
 The principal part between `SERF START` and `SERF END` is the command
@@ -951,8 +951,8 @@ We will start by creating the scripts in [ha/scripts](ha/scripts). So create two
 this directory and set them as executable. You can use these commands:
 
 ```bash
-touch /ha/scripts/member-join.sh && chmod +x /ha/scripts/member-join.sh
-touch /ha/scripts/member-leave.sh && chmod +x /ha/scripts/member-leave.sh
+touch ./ha/scripts/member-join.sh && chmod +x ./ha/scripts/member-join.sh
+touch ./ha/scripts/member-leave.sh && chmod +x ./ha/scripts/member-leave.sh
 ```
 
 In the `member-join.sh` script, put the following content:
@@ -1115,7 +1115,7 @@ following content:
 
 ```
 # Install NodeJS
-RUN curl -sSLo /tmp/node.tar.xz https://nodejs.org/dist/v4.4.4/node-v4.4.4-linux-x64.tar.xz \
+RUN curl -sSLo /tmp/node.tar.xz https://nodejs.org/dist/v14.15.1/node-v14.15.1-linux-x64.tar.xz \
   && tar -C /usr/local --strip-components 1 -xf /tmp/node.tar.xz \
   && rm -f /tmp/node.tar.xz
 ```
@@ -1136,7 +1136,7 @@ install required tool to install NodeJS`.
     This manual install has at least one bad practice: In the original
     image of `NodeJS` they download of the required files and then
     check the downloads against a `GPG` signatures. We have skipped
-    this part in our `ha`image, but in practice you should check every
+    this part in our `ha` image, but in practice you should check every
     download to avoid issues like the `man in the middle` attack.
 
     You can take a look at the following links if you are interested
@@ -1156,8 +1156,8 @@ install required tool to install NodeJS`.
     time. For example, we have the following hierarchy for our HAProxy
     image.
 
-    <a href="https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AIT-2016-Labo-Docker/blob/master/assets/img/image-hierarchy.png">
-      <img src="https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AIT-2016-Labo-Docker/raw/master/assets/img/image-hierarchy.png" alt="HAProxy Image Hierarchy" width="600">
+    <a href="https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AIT-2019-Labo-Docker/blob/master/assets/img/image-hierarchy.png">
+      <img src="https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AIT-2019-Labo-Docker/raw/master/assets/img/image-hierarchy.png" alt="HAProxy Image Hierarchy" width="600">
     </a>
 
     Here is the reference to the Docker documentation of the `FROM` command:
@@ -1360,11 +1360,11 @@ First, we will copy/paste the content of the
 run the following command:
 
 ```bash
-cp ha/config/haproxy.cfg ha/config/haproxy.cfg.hb
+cp ./ha/config/haproxy.cfg ./ha/config/haproxy.cfg.hb
 ```
 
 Then we will replace the content between `# HANDLEBARS START` and
-`# HANDLEBARS STOP` by the following content:
+`# HANDLEBARS STOP` (see previous haproxy.cfg.hb) by the following content:
 
 ```
 {{#each addresses}}
@@ -1679,7 +1679,7 @@ s6-svc -h /var/run/s6/services/ha
   - [S6 svc doc](http://skarnet.org/software/s6/s6-svc.html)
 
 It's time to build and run our images. At this stage, if you try to reach
-`http://192.168.42.42`, it will not work. No surprise as we do not start any
+`http://192.168.42.42` or `http://localhost`, it will not work. No surprise as we do not start any
 backend node. Let's start one container and try to reach the same URL.
 
 You can start the web application nodes. If everything works well, you could
