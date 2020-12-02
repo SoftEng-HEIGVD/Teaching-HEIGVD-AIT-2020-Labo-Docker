@@ -48,11 +48,6 @@ should be quick if you already completed the lab on load balancing):
   the link:
   <http://cbonte.github.io/haproxy-dconv/2.2/configuration.html>
 
-  **Note**: There is an exception for that later in the lab. The
-  documentation for a part of HAProxy (the command line help) is not
-  available in 2.2. Therefore, we use the doc for 2.2 which is not
-  different for our usage.
-
 - In the report give the URL of the repository that you forked off this lab.
 
 - The images and the web application are a bit different from the lab on load
