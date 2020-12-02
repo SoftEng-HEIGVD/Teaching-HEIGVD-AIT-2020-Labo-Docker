@@ -2,7 +2,7 @@
 FROM node:latest
 
 # TODO: [GEN] Replace with your name and email
-MAINTAINER Laurent Prevost <laurent.prevost@heig-vd.ch>
+LABEL Daniel Palumbo <daniel.palumbo@heig-vd.ch>
 
 # Install the required tools to run our webapp and some utils
 RUN apt-get update && apt-get -y install wget curl vim && apt-get clean && npm install -g bower

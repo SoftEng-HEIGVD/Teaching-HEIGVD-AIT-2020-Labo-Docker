@@ -43,14 +43,14 @@ should be quick if you already completed the lab on load balancing):
 - In your report reference the task numbers and question numbers of
   this document.
 
-- The version of HAProxy used in this lab is `1.5`. When reading the
+- The version of HAProxy used in this lab is `2.2`. When reading the
   documentation, make sure you are looking at this version. Here is
   the link:
-  <http://cbonte.github.io/haproxy-dconv/configuration-1.5.html>
+  <http://cbonte.github.io/haproxy-dconv/2.2/configuration.html>
 
   **Note**: There is an exception for that later in the lab. The
   documentation for a part of HAProxy (the command line help) is not
-  available in 1.5. Therefore, we use the doc for 1.6 which is not
+  available in 2.2. Therefore, we use the doc for 2.2 which is not
   different for our usage.
 
 - In the report give the URL of the repository that you forked off this lab.
@@ -188,7 +188,7 @@ download and install from:
 * [Docker compose](https://docs.docker.com/compose/)
 
 Fork the following repository and then clone the fork to your machine:
-<https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AIT-2015-Labo-Docker>
+<https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-AIT-2019-Labo-Docker>
 
 To fork the repo, just click on the `Fork` button in the GitHub interface.
 
@@ -240,7 +240,7 @@ You could verify that you have a network heig who connect the containers :
 
 `$ docker network ls`
 
-You can now navigate to the address of the load balancer <http://192.168.42.42>
+You can now navigate to the address of the load balancer <http://192.168.42.42> (or <http://localhost>)
 in your favorite browser. The load balancer forwards your HTTP request to one
 of the web app containers.
 

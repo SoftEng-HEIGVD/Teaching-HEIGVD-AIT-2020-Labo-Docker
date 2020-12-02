@@ -1,8 +1,8 @@
 # Base image is the Official HAProxy
-FROM haproxy:1.5
+FROM haproxy:2.2
 
 # TODO: [GEN] Replace with your name and email
-MAINTAINER Laurent Prevost <laurent.prevost@heig-vd.ch>
+LABEL Daniel Palumbo <daniel.palumbo@heig-vd.ch>
 
 # Install some tools
 # TODO: [HB] Update to install required tool to install NodeJS
