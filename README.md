@@ -436,8 +436,8 @@ We need to copy the `run.sh` scripts as `run` files in the service
 directories.  You can achieve that by the following commands :
 
 ```bash
-cp cp ./ha/scripts/run.sh ./ha/services/ha/run && chmod +x ./ha/services/ha/run
-cp /webapp/scripts/run.sh /webapp/services/node/run && chmod +x /webapp/services/node/run
+cp ha/scripts/run.sh ha/services/ha/run && chmod +x ha/services/ha/run
+cp webapp/scripts/run.sh webapp/services/node/run && chmod +x webapp/services/node/run
 ```
 
 Once copied, replace the hashbang instruction in both files. Replace
@@ -620,8 +620,8 @@ In each directory, create an executable file called `run`. You can
 achieve that by the following commands:
 
 ```bash
-touch /ha/services/serf/run && chmod +x /ha/services/serf/run
-touch ./webapp/services/serf/run && chmod +x ./webapp/services/serf/run
+touch ha/services/serf/run && chmod +x ha/services/serf/run
+touch webapp/services/serf/run && chmod +x webapp/services/serf/run
 ```
 
 In the `ha/services/serf/run` file, add the following script. This
@@ -819,54 +819,6 @@ where container name is one of:
   - s1
   - s2
 
-You will notice the following in the logs (or something similar).
-
-```
-==> Joining cluster...(replay: false)
-==> lookup ha on 10.0.2.3:53: no such host
-```
-
-This means that our nodes are not joining the `Serf` cluster and more important
-cannot resolve the DNS names of the nodes.
-
-You can do a simple experiment to see yourself that there is no name resolution.
-Connect to a container and run a ping command.
-
-```bash
-docker exec -ti ha /bin/bash
-
-# From ha container
-ping s1
-```
-
-The problem is due to the latest versions of Docker where the networking have
-been totally reworked.
-
-In latest Docker versions, the network part was totally rewritten and changed
-a lot. In fact, the default networks we have used until now have seen their behavior
-changed.
-
-Stop all your containers:
-
-```bash
-docker rm -f ha s1 s2
-```
-
-If you want to know more about Docker networking, take the time to read the different
-pages in the references. Docker team provide a good overview and lot of details about
-this important topic.
-
-So to start the `ha` container the command becomes:
-
-```bash
-docker run -d -p 80:80 -p 1936:1936 -p 9999:9999 --network brige --link s1 --link s2 --name ha <imageName>
-```
-
-And for the backend nodes:
-
-```bash
-docker run -d --network heig --name s1 <imageName>
-```
 
 **Remarks**:
 
@@ -898,8 +850,8 @@ docker run -d --network heig --name s1 <imageName>
     clean these two files (and folder in case of web application).
 
     ```bash
-    rm /ha/scripts/run.sh
-    rm -r /webapp/scripts
+    rm ha/scripts/run.sh
+    rm -r webapp/scripts
     ```
 
 **Deliverables**:
@@ -946,8 +898,8 @@ We will start by creating the scripts in [ha/scripts](ha/scripts). So create two
 this directory and set them as executable. You can use these commands:
 
 ```bash
-touch ./ha/scripts/member-join.sh && chmod +x ./ha/scripts/member-join.sh
-touch ./ha/scripts/member-leave.sh && chmod +x ./ha/scripts/member-leave.sh
+touch ha/scripts/member-join.sh && chmod +x ha/scripts/member-join.sh
+touch ha/scripts/member-leave.sh && chmod +x ha/scripts/member-leave.sh
 ```
 
 In the `member-join.sh` script, put the following content:
@@ -1017,23 +969,16 @@ repository.
 Run the `ha` container first and capture the logs with `docker logs` (**keep the logs**).
 
 ```bash
-docker run -d -p 80:80 -p 1936:1936 -p 9999:9999 --network heig --name ha <imageName>
+docker-compose up -d haproxy
 ```
 
 Now, run one of the two backend containers and capture the logs (**keep the logs**). Shortly after
 starting the container capture also the logs of the `ha` node (**keep the logs**).
 
 ```bash
-docker run -d --network heig --name s1 <imageName>
-docker run -d --network heig --name s2 <imageName>
+docker-compose up -d webapp1
+docker-compose up -d webapp2
 ```
-
-**Remarks**:
-
-  - You probably noticed that we removed the `links` to container `s1` and `s2`.
-    The reason is that we will not rely on that mechanism for the next steps. For
-    the moment the communication between the reverse proxy and the backend
-    nodes is broken.
 
 Once started, get the logs (**keep the logs**) of the backend container.
 
@@ -1181,7 +1126,7 @@ will just play with a simple template. So, first create a file in `ha/config` ca
 `haproxy.cfg.hb` with a simple template content. Use the following command for that:
 
 ```bash
-echo "Container {{ name }} has joined the Serf cluster with the following IP address: {{ ip }}" >> /ha/config/haproxy.cfg.hb
+echo "Container {{ name }} has joined the Serf cluster with the following IP address: {{ ip }}" >> ha/config/haproxy.cfg.hb
 ```
 
 We need our template present in our `ha` image. We have to add the following
@@ -1258,7 +1203,7 @@ whether it saw `s1` coming up. Then do the same for `s2`:
 
 ```bash
 # 1) Run the S1 container
-docker run -d --network heig --name s1 <imageName>
+docker-compose up -d webapp1
 
 # 2) Connect to the ha container (optional if you have another ssh session)
 docker exec -ti ha /bin/bash
@@ -1270,7 +1215,7 @@ cat /tmp/haproxy.cfg
 exit
 
 # 5) Run the S2 container
-docker run -d --network heig --name s2 <imageName>
+docker-compose up -d webapp2
 
 # 6) Connect to the ha container (optional if you have another ssh session)
 docker exec -ti ha /bin/bash
@@ -1355,7 +1300,7 @@ First, we will copy/paste the content of the
 run the following command:
 
 ```bash
-cp ./ha/config/haproxy.cfg ./ha/config/haproxy.cfg.hb
+cp ha/config/haproxy.cfg ha/config/haproxy.cfg.hb
 ```
 
 Then we will replace the content between `# HANDLEBARS START` and
