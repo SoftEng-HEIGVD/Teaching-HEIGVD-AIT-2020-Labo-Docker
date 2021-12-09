@@ -19,19 +19,83 @@ title: Lab 04 - Docker
 
 1. **[M1]** *Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?*
 
-2. **[M2]** *Describe what you need to do to add new `webapp` container to the infrastructure. Give the exact steps of what you have to do without modifiying the way the things are done. Hint: You probably have to modify some configuration and script files in a Docker image.*
+- Pour ajouter un nouveau serveur, il est nécessaire de l'ajouter manuellement dans la  configuration de HAProxy
+- Le système repose sur un seul proxy. En cas de forte demande, celui-ci peut aussi tomber
 
-3. **[M3]** *Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.*
+1. **[M2]** *Describe what you need to do to add new `webapp` container to the infrastructure. Give the exact steps of what you have to do without modifiying the way the things are done. Hint: You probably have to modify some configuration and script files in a Docker image.*
 
-4. **[M4]** *You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?*
+####  docker-compose.yml
 
-5. **[M5]** *In the physical or virtual machines of a typical infrastructure we tend to have not only one main process (like the web server or the load balancer) running, but a few additional processes on the side to perform management tasks.*
+Ajouter une webapp3 en modifiant les paramètres qui lui sont propres comme :
+
+- Le nom du container
+- Son adresse IP
+- Son port
+
+```yaml
+   webapp3:
+       container_name: ${WEBAPP_3_NAME}
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: ${WEBAPP_3_IP}
+       ports:
+         - "4002:3000"
+       environment:
+            - TAG=${WEBAPP_3_NAME}
+            - SERVER_IP=${WEBAPP_3_IP} 
+```
+
+Toujours dans le même fichier, ajouter dans la partie environnement  webapp3
+
+```yaml
+  environment:
+            - WEBAPP_1_IP=${WEBAPP_1_IP}
+            - WEBAPP_2_IP=${WEBAPP_2_IP}
+            - WEBAPP_3_IP=${WEBAPP_3_IP}
+```
+
+#### haproxy.cfgc
+
+Dans haproxy.cfgc, il faut ajouter le serveur 3 :
+
+```bash
+server s3 ${WEBAPP_3_IP}:3000 check
+```
+
+### .env
+
+Dans le fichier .env, il faut ajouter également webapp_3
+
+```.env
+WEBAPP_1_NAME=s1
+WEBAPP_2_NAME=s2
+WEBAPP_3_NAME=s3
+
+WEBAPP_1_IP=192.168.42.11
+WEBAPP_2_IP=192.168.42.22
+WEBAPP_3_IP=192.168.42.33
+
+HA_PROXY_IP=192.168.42.42
+
+NETWORK_SUBNET=192.168.42.0/24
+```
+
+
+
+1. **[M3]** *Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.*
+
+2. **[M4]** *You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?*
+
+3. **[M5]** *In the physical or virtual machines of a typical infrastructure we tend to have not only one main process (like the web server or the load balancer) running, but a few additional processes on the side to perform management tasks.*
 
    *For example to monitor the distributed system as a whole it is common to collect in one centralized place all the logs produced by the different machines. Therefore we need a process running on each machine that will forward the logs to the central place. (We could also imagine a central tool that reaches out to each machine to gather the logs. That's a push vs. pull problem.) It is quite common to see a push mechanism used for this kind of task.*
 
    *Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?*
 
-6. **[M6]** *In our current solution, although the load balancer configuration is changing dynamically, it doesn't follow dynamically the configuration of our distributed system when web servers are added or removed. If we take a closer look at the `run.sh` script, we see two calls to `sed` which will replace two lines in the `haproxy.cfg` configuration file just before we start `haproxy`. You clearly see that the configuration file has two lines and the script will replace these two lines.*
+4. **[M6]** *In our current solution, although the load balancer configuration is changing dynamically, it doesn't follow dynamically the configuration of our distributed system when web servers are added or removed. If we take a closer look at the `run.sh` script, we see two calls to `sed` which will replace two lines in the `haproxy.cfg` configuration file just before we start `haproxy`. You clearly see that the configuration file has two lines and the script will replace these two lines.*
 
    *What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?*
 
