@@ -28,6 +28,20 @@ services :
        environment:
             - TAG=${WEBAPP_2_NAME}
             - SERVER_IP=${WEBAPP_2_IP}
+            
+  webapp3:
+       container_name: ${WEBAPP_3_NAME}
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: ${WEBAPP_3_IP}
+       ports:
+         - "4002:3000"
+       environment:
+            - TAG=${WEBAPP_3_NAME}
+            - SERVER_IP=${WEBAPP_3_IP}
 
   haproxy:
        container_name: ha
@@ -48,6 +62,7 @@ services :
        environment:
             - WEBAPP_1_IP=${WEBAPP_1_IP}
             - WEBAPP_2_IP=${WEBAPP_2_IP}
+            - WEBAPP_3_IP=${WEBAPP_3_IP}
 networks:
     heig:
         name: heig
