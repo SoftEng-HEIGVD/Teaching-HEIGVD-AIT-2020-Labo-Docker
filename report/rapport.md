@@ -103,7 +103,7 @@ NETWORK_SUBNET=192.168.42.0/24
 
 1. Take a screenshot of the stats page of HAProxy at [http://192.168.42.42:1936](http://192.168.42.42:1936/). You should see your backend nodes.
 
-   
+   ![HAProxy_StatPage](img/HAProxy_StatPage.PNG)
 
 2. Give the URL of your repository URL in the lab report.
 
