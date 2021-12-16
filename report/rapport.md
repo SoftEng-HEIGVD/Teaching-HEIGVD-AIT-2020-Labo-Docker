@@ -35,6 +35,16 @@ title: Lab 04 - Docker
 
    *What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?*
 
+**Deliverables :**
+
+1. Take a screenshot of the stats page of HAProxy at [http://192.168.42.42:1936](http://192.168.42.42:1936/). You should see your backend nodes.
+
+   
+
+2. Give the URL of your repository URL in the lab report.
+
+   URL du repo git : [https://github.com/Tchewi/AIT-Labo4-Docker-and-dynamic-scaling](https://github.com/Tchewi/AIT-Labo4-Docker-and-dynamic-scaling)
+
 ### Tâche 1
 
 ### Tâche 2
