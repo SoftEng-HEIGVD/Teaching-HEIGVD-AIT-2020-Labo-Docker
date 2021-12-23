@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/with-contenv bash
 rsyslogd -c5 2>/dev/null
 
 # TODO: [CFG] Remove the following two lines
