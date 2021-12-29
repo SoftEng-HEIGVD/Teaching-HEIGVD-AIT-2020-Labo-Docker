@@ -205,6 +205,8 @@ Tous les déliverable sont dans le dossier des logs.
 
 ### Tâche 6
 
+2. *Give your own feelings about the final solution. Propose improvements or ways to do the things differently. If any, provide references to your readings for the improvements.
+
 ### Difficultés
 
 Suivre les tâches n'étaient pas spécialement compliqué, mais répondre a certaines question nous a demandé pas mal de travaille de recherche.
