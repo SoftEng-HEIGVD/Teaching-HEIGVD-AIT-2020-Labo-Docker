@@ -145,6 +145,8 @@ Pour ce faire, dans cette tâches, nous avons installé **s1**, un `init system`
 
 2. *Give the answer to the question about the existing problem with the*
    *current solution.*
+   
+   Le problème est que nous indiquons aux nodes de rejoindre la node ha. Cela ne fonctionne que si ha est up quand les autres viennent. Il faudrait que les nodes arrivent à rejoindre d'eux même.
 
 3. *Give an explanation on how `Serf` is working. Read the official*
    *website to get more details about the `GOSSIP` protocol used in*
