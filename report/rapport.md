@@ -12,7 +12,7 @@ title: Lab 04 - Docker
 6. [Make the load balancer automatically reload the new configuration](#task-6)
 
 ## Introduction
-
+Dans ce laboratoire nous allons voir comment scaller dynamiquement notre infrastructure lorsqu'on détecte un node ou un node tombe. Nous allons utiliser les paramètre de Haproxy et de multiple manipulation lié à Docker.
 ## Tâches
 
 ### Tâche 0
