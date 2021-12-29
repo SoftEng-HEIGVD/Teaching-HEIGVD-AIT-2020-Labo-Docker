@@ -201,6 +201,8 @@ Nous les générérons ou les récupérons manuellement ce qui est peu efficace.
 
 ### Tâche 5
 
+Tous les déliverable sont dans le dossier des logs.
+
 ### Tâche 6
 
 ### Difficultés
