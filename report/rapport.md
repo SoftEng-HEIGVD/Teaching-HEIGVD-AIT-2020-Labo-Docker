@@ -244,6 +244,8 @@ celui-ci est disponible dans le dossier nodes
 
 2. *Give your own feelings about the final solution. Propose improvements or ways to do the things differently. If any, provide references to your readings for the improvements.
 
+La solution est bonne, car on peut ajouter des nodes sans changer les fichiers de configuration, ce qui économise pas mal de temps. Actuellement on doit lancer les container manuellement, ce qui fait qu'on doit monitorer le traffic et ajouter/enlever des container nous même. Cela pose un problème au niveau de la scalabilité. Cette solution n'est pas utilisable pour les sites avec un traffic irrégulier. On pourrais améliorer ça avec une automatisation de l'ajout de container.
+
 ### Difficultés
 
 Suivre les tâches n'étaient pas spécialement compliqué, mais répondre a certaines question nous a demandé pas mal de travaille de recherche.
