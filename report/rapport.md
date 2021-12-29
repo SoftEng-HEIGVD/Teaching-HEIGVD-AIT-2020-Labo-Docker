@@ -105,25 +105,58 @@ Il y a plusieurs fichiers à modifier pour ajouter le serveur, ce qui n'est pas 
 
 1. Take a screenshot of the stats page of HAProxy at [http://192.168.42.42:1936](http://192.168.42.42:1936/). You should see your backend nodes.
 
-   ![HAProxy_StatPage](img/HAProxy_StatPage.PNG)
+   ![HAProxy_StatPage](./img/HAProxy_StatPage.PNG)
 
 2. Give the URL of your repository URL in the lab report.
 
    URL du repo git : [https://github.com/Tchewi/AIT-Labo4-Docker-and-dynamic-scaling](https://github.com/Tchewi/AIT-Labo4-Docker-and-dynamic-scaling)
 
-### Tâche 1
+### Task1 - Add a process supervisor to run several processes
 
 **Deliverables**:
 
-1. Take a screenshot of the stats page of HAProxy at [http://192.168.42.42:1936](http://192.168.42.42:1936/). You should see your backend nodes. It should be really similar to the screenshot of the previous task.
+1. *Take a screenshot of the stats page of HAProxy at [http://192.168.42.42:1936](http://192.168.42.42:1936/). You should see your backend nodes. It should be really similar to the screenshot of the previous task.*
 
-![task1-1](C:\Users\super\Documents\HEIG-git\ait\AIT-Labo4-Docker-and-dynamic-scaling\report\img\task1-1.png)
+![task1-1](./img/task1-1.png)
 
-1. Describe your difficulties for this task and your understanding of what is happening during this task. Explain in your own words why are we installing a process supervisor. Do not hesitate to do more research and to find more articles on that topic to illustrate the problem.
+2. *Describe your difficulties for this task and your understanding of what is happening during this task. Explain in your own words why are we installing a process supervisor. Do not hesitate to do more research and to find more articles on that topic to illustrate the problem.*
 
+L'installation d'un processus superviseur nous donne la possibilité de lancer de mupltiples processus en même temps dans un environnement docker.
 
+Pour ce faire, dans cette tâches, nous avons installé **s1**, un `init system`permettant de gérer des deamons et coordonner les processus boot.
 
-### Tâche 2
+### Task 2: Add a tool to manage membership in the web server cluster
+
+1. *Provide the docker log output for each of the containers: `ha`,*
+   *`s1` and `s2`. You need to create a folder `logs` in your*
+   *repository to store the files separately from the lab*
+   *report. For each lab task create a folder and name it using the*
+   *task number. No need to create a folder when there are no logs.*
+
+   Example:
+
+   ```
+   |-- root folder
+     |-- logs
+       |-- task 1
+       |-- task 3
+       |-- ...
+   ```
+
+2. *Give the answer to the question about the existing problem with the*
+   *current solution.*
+
+3. *Give an explanation on how `Serf` is working. Read the official*
+   *website to get more details about the `GOSSIP` protocol used in*
+   *`Serf`. Try to find other solutions that can be used to solve*
+   *similar situations where we need some auto-discovery mechanism*.
+
+Chaque container aura un Serf Agent (Load Balancer et web app). L'agent serf utilise un protocole peer-to-peer pour échanger des informations au sein d'un cluser de nodes. Les informations échangées sont ;
+
+- L'existence des nodes dans le cluster
+- Leur adresse IP
+
+Quand un node disparait ou apparait du cluserm c'est le Serf Agent qui informe  les autres nodes de l'événements.
 
 ### Tâche 3
 
