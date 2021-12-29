@@ -169,7 +169,7 @@ Quand un node disparait ou apparait du cluserm c'est le Serf Agent qui informe  
 
 ### Tâche 3
 
-
+Tous les déliverable sont dans le dossier des logs.
 
 ### Tâche 4
 
