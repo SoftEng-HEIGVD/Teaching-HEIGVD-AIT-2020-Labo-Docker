@@ -87,9 +87,11 @@ NETWORK_SUBNET=192.168.42.0/24
 
 1. **[M3]** *Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.*
 
-Il y a plusieurs fichiers à modifier pour ajouter le serveur, ce qui n'est pas pratique
+Il nous faudrait un sytème qui nous ppermeterrais d'enlever/ajouter des serveurs web et ils en informeraient le Haproxy. Il faudrait qu'on puisse monitorer les services et les redémarrer en cas de besion.
 
 1. **[M4]** *You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?*
+
+Comme mentionné en dans la question précédente, il faudrait que les nodes informe le Haproxy de leur présence et de leurs capacités.
 
 2. **[M5]** *In the physical or virtual machines of a typical infrastructure we tend to have not only one main process (like the web server or the load balancer) running, but a few additional processes on the side to perform management tasks.*
 
