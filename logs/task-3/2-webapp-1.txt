@@ -1,0 +1,45 @@
+[s6-init] making user provided files available at /var/run/s6/etc...exited 0.
+[s6-init] ensuring user provided files have correct perms...exited 0.
+[fix-attrs.d] applying ownership & permissions fixes...
+[fix-attrs.d] done.
+[cont-init.d] executing container initialization scripts...
+[cont-init.d] done.
+[services.d] starting services
+/opt/bin/serf agent --join ha --tag role=backend
+==> Starting Serf agent...
+==> Starting Serf agent RPC...
+==> Serf agent running!
+         Node name: '7f1478001f67'
+         Bind addr: '0.0.0.0:7946'
+                       RPC addr: '127.0.0.1:7373'
+                      Encrypted: false
+                       Snapshot: false
+                        Profile: lan
+    Message Compression Enabled: true
+==> Joining cluster...(replay: false)
+    Join completed. Synced with 1 initial agents
+
+==> Log data will now stream in as it occurs:
+
+    2021/12/29 10:34:20 [INFO] agent: Serf agent starting
+    2021/12/29 10:34:20 [INFO] serf: EventMemberJoin: 7f1478001f67 192.168.42.11
+    2021/12/29 10:34:20 [INFO] agent: joining: [ha] replay: false
+    2021/12/29 10:34:20 [INFO] serf: EventMemberJoin: 5fdef7a514e6 192.168.42.42
+    2021/12/29 10:34:20 [INFO] agent: joined: 1 nodes
+[services.d] done.
+Application started
+    2021/12/29 10:34:21 [INFO] agent: Received event: member-join
+HEAD / 200 7.214 ms - 129
+HEAD / 200 1.597 ms - 129
+HEAD / 200 0.989 ms - 129
+HEAD / 200 0.907 ms - 129
+HEAD / 200 1.064 ms - 129
+HEAD / 200 0.949 ms - 129
+HEAD / 200 0.738 ms - 129
+HEAD / 200 0.862 ms - 129
+HEAD / 200 1.259 ms - 129
+HEAD / 200 1.047 ms - 129
+HEAD / 200 0.832 ms - 129
+HEAD / 200 1.095 ms - 129
+HEAD / 200 0.951 ms - 129
+
