@@ -105,6 +105,7 @@ Dans docker, il y a un seul processus qui tourne par container. On doit donc wra
 
    *What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?*
    
+Quand nous ajoutons un node serveur web, bous devons ajouter le node dans le fichier haproxy.cfg, puis relancer le script run.sh pour que le node soit ajouter. Pour rendre le tout dynamique, nous devons utiliser le Runtime API de Haproxy.
 
 **Deliverables :**
 
