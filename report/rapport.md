@@ -210,3 +210,5 @@ Tous les déliverable sont dans le dossier des logs.
 Suivre les tâches n'étaient pas spécialement compliqué, mais répondre a certaines question nous a demandé pas mal de travaille de recherche.
 
 ### Conclusion
+
+Nous avons pu voir tout les paranètres qui fallait prendre en compte pour faire un système de load balancing dynamique, comment le faire et le mettre en place de manière à pouvoir facilement construire sur ces fondations. Nous avons vu aussi plein de nouveau outils et leurs application pour les problème de scalling et la gestion des ressources.
