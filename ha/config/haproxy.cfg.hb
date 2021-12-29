@@ -109,6 +109,9 @@ backend nodes
     # http://cbonte.github.io/haproxy-dconv/2.2/configuration.html#4-server
 
     # HANDLEBARS START
+    {{#each addresses}}
+server {{ host }} {{ ip }}:3000 check
+{{/each}}
     # TODO: [CFG] Remove all the servers
     #server s1 ${WEBAPP_1_IP}:3000 check
     #server s2 ${WEBAPP_2_IP}:3000 check
