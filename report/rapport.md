@@ -146,6 +146,7 @@ Pour ce faire, dans cette tâches, nous avons installé **s1**, un `init system`
 2. *Give the answer to the question about the existing problem with the*
    *current solution.*
    
+
 Le problème est que nous indiquons aux nodes de rejoindre la node ha. Cela ne fonctionne que si ha est up quand les autres viennent. Il faudrait que les nodes arrivent à rejoindre d'eux même.
 
 3. *Give an explanation on how `Serf` is working. Read the official*
@@ -162,7 +163,35 @@ Quand un node disparait ou apparait du cluserm c'est le Serf Agent qui informe  
 
 ### Tâche 3
 
+
+
 ### Tâche 4
+
+1. *You probably noticed when we added `xz-utils`, we have to rebuild the whole image which took some time. What can we do to mitigate that? Take a look at the Docker documentation on [image layers](https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/#images-and-layers). Tell us about the pros and cons to merge as much as possible of the command. In other words, compare:*
+
+```
+RUN command 1
+RUN command 2
+RUN command 3
+```
+
+vs.
+
+```
+RUN command 1 && command 2 && command 3
+```
+
+There are also some articles about techniques to reduce the image size. Try to find them. They are talking about `squashing` or `flattening` images.
+
+2. *Propose a different approach to architecture our images to be able to reuse as much as possible what we have done. Your proposition should also try to avoid as much as possible repetitions between your images.*
+
+3. *Provide the `/tmp/haproxy.cfg` file generated in the `ha` container after each step. Place the output into the `logs` folder like you already did for the Docker logs in the previous tasks. Three files are expected.*
+
+*In addition, provide a log file containing the output of the `docker ps` console and another file (per container) with `docker inspect <container>`. Four files are expected.*
+
+4. *Based on the three output files you have collected, what can you say about the way we generate it? What is the problem if any?*
+
+Nous les générérons ou les récupérons manuellement ce qui est peu efficace. Par exemple pour les logs `/tmp/haproxy.cfg`, il faut se connecter dans le docker pour le copier/afficher. Pour les logs des commandes `docker inspect`, on doit exécuter la commande pour chaque conteneur.
 
 ### Tâche 5
 
