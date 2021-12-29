@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare -i fileNum=0
-dest="/home/ryan/Desktop/logs/task-5"
+dest="/home/ryan/Desktop/logs/task-6"
 docker-compose up -d haproxy
  docker cp ha:/usr/local/etc/haproxy/haproxy.cfg $dest
  fileName="haproxy.cfg-"${fileNum}.txt
