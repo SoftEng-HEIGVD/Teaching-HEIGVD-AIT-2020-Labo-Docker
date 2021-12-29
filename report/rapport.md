@@ -205,4 +205,6 @@ Nous les générérons ou les récupérons manuellement ce qui est peu efficace.
 
 ### Difficultés
 
+Suivre les tâches n'étaient pas spécialement compliqué, mais répondre a certaines question nous a demandé pas mal de travaille de recherche.
+
 ### Conclusion
