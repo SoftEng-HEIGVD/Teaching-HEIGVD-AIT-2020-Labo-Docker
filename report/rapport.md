@@ -99,12 +99,14 @@ Comme mentionné en dans la question précédente, il faudrait que les nodes inf
 
    *Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?*
    
+
 Dans docker, il y a un seul processus qui tourne par container. On doit donc wrapper le processus de base et celui des logs et utiliser un contenaire additionnel comme serveur de logs qui sevira pour centraliser les informations.
 
 3. **[M6]** *In our current solution, although the load balancer configuration is changing dynamically, it doesn't follow dynamically the configuration of our distributed system when web servers are added or removed. If we take a closer look at the `run.sh` script, we see two calls to `sed` which will replace two lines in the `haproxy.cfg` configuration file just before we start `haproxy`. You clearly see that the configuration file has two lines and the script will replace these two lines.*
 
    *What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?*
    
+
 Quand nous ajoutons un node serveur web, bous devons ajouter le node dans le fichier haproxy.cfg, puis relancer le script run.sh pour que le node soit ajouter. Pour rendre le tout dynamique, nous devons utiliser le Runtime API de Haproxy.
 
 **Deliverables :**
@@ -202,6 +204,41 @@ Nous les générérons ou les récupérons manuellement ce qui est peu efficace.
 ### Tâche 5
 
 Tous les déliverable sont dans le dossier des logs.
+
+*Provide the file `/usr/local/etc/haproxy/haproxy.cfg` generated in*
+*the `ha` container after each step. Three files are expected.*
+
+*In addition, provide a log file containing the output of the* 
+*`docker ps` console and another file (per container) with*
+*`docker inspect <container>`. Four files are expected.*
+
+Les fichiers sont disponible dans le dossier question-1
+
+*2. Provide the list of files from the `/nodes` folder inside the `ha` container.*
+*One file expected with the command output.*
+
+Nous avons copié le dossier nodes pour éviter de devoir exécuter des commandes dans le conteneur. Celui-ci contient 2 fichiers : `7157d6f2890a` et `4676103748e6`
+
+Les fichiers sont disponibles dans le dossier question-2
+
+
+
+*3. Provide the configuration file after you stopped one container and*
+*the list of nodes present in the `/nodes` folder. One file expected*
+*with the command output. Two files are expected.*  *In addition, provide a log file containing the output of the* *`docker ps` console. One file expected*.
+
+Les fichiers sont disponibles dans /logs/task-5/question-3
+
+- Fichier de configuration : `haproxy.cfg-3.txt`
+- Commande ps :  `psStop.txt`
+
+- nodes : Il reste qu'un seul fichier : `7157d6f2890a`
+
+celui-ci est disponible dans le dossier nodes
+
+
+
+
 
 ### Tâche 6
 
