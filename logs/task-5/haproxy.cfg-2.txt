@@ -110,6 +110,8 @@ backend nodes
 
     # HANDLEBARS START
     
+server 4676103748e6 192.168.42.11:3000 check
+
 server 7157d6f2890a 192.168.42.22:3000 check
 
     # TODO: [CFG] Remove all the servers
