@@ -1,0 +1,122 @@
+[
+    {
+        "Id": "sha256:809fa07af074f1c71b37d46d4960bdda35efd3798ce71dd8ccc8f551cbacf5c3",
+        "RepoTags": [
+            "haproxy:latest"
+        ],
+        "RepoDigests": [],
+        "Parent": "sha256:498508248b635752ee6bdb73ca36c72d3c468ec12b937243a83a534a20d4bb42",
+        "Comment": "",
+        "Created": "2021-12-16T15:59:52.60462697Z",
+        "Container": "67a4ed39a765116564353be789ea6e1c3d9b978a7c9f3aed838abe407885f59c",
+        "ContainerConfig": {
+            "Hostname": "67a4ed39a765",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "1936/tcp": {},
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HAPROXY_VERSION=2.2.18",
+                "HAPROXY_URL=https://www.haproxy.org/download/2.2/src/haproxy-2.2.18.tar.gz",
+                "HAPROXY_SHA256=a04a179d82711cac2199c4615621aaa9598c4788de2b34dccb9dd44da2862c50",
+                "ROLE=balancer"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "#(nop) ",
+                "CMD [\"/scripts/run.sh\"]"
+            ],
+            "Image": "sha256:498508248b635752ee6bdb73ca36c72d3c468ec12b937243a83a534a20d4bb42",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "Daniel": "Palumbo <daniel.palumbo@heig-vd.ch>"
+            },
+            "StopSignal": "SIGUSR1"
+        },
+        "DockerVersion": "20.10.7",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "1936/tcp": {},
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "HAPROXY_VERSION=2.2.18",
+                "HAPROXY_URL=https://www.haproxy.org/download/2.2/src/haproxy-2.2.18.tar.gz",
+                "HAPROXY_SHA256=a04a179d82711cac2199c4615621aaa9598c4788de2b34dccb9dd44da2862c50",
+                "ROLE=balancer"
+            ],
+            "Cmd": [
+                "/scripts/run.sh"
+            ],
+            "Image": "sha256:498508248b635752ee6bdb73ca36c72d3c468ec12b937243a83a534a20d4bb42",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "Daniel": "Palumbo <daniel.palumbo@heig-vd.ch>"
+            },
+            "StopSignal": "SIGUSR1"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 237548043,
+        "VirtualSize": 237548043,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/cd05b6cefee622872f568ce60623451d9ced0ec384d966f311befd9186a302d1/diff:/var/lib/docker/overlay2/7b615d3276769aa3c62d635b01d2c0e3f25e8d1962bdbb0c717dbcdb4a101638/diff:/var/lib/docker/overlay2/61612f2861c660cf2f125a953e346882868d9817c3745d25dd626f7c91353cbb/diff:/var/lib/docker/overlay2/b39017a2666dfa2bfb22348268a87ab0605065a661e9ac141519f43ed08434ab/diff:/var/lib/docker/overlay2/7690e1eb52b871d11b74ea31d50df787340f567a774c914bf516b8220f5cc2a7/diff:/var/lib/docker/overlay2/1bc101ae34848a6ae2ccc43752c5bd569ea76c60731a4681f1a53484f9866e63/diff:/var/lib/docker/overlay2/a97b6e2aeefe6f47b9df366a6d74be132fa5499f3518f35d5056fd72e2b0332a/diff:/var/lib/docker/overlay2/c50b1a87b32e7877f4b54651ffd480abcabe76e7a553b64ff9b0a393c6a1e3c0/diff:/var/lib/docker/overlay2/33d8f5877862a7269ae6beb020365891496f731e59660f377b9cc5e90dd93cc0/diff:/var/lib/docker/overlay2/23a85d7d38ea196ec42832449e1017ef2d9c46c8765a89cc8f4905c2b204fda3/diff",
+                "MergedDir": "/var/lib/docker/overlay2/7606e1b454b869610cb18c6b1c2634bce42489e47af0a4edfb6da21c7a4a9869/merged",
+                "UpperDir": "/var/lib/docker/overlay2/7606e1b454b869610cb18c6b1c2634bce42489e47af0a4edfb6da21c7a4a9869/diff",
+                "WorkDir": "/var/lib/docker/overlay2/7606e1b454b869610cb18c6b1c2634bce42489e47af0a4edfb6da21c7a4a9869/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:e1bbcf243d0e7387fbfe5116a485426f90d3ddeb0b1738dca4e3502b6743b325",
+                "sha256:e0097f803f17939383cd1e40bf0e055d0666dbb6422593e2530ec0f725d08bfc",
+                "sha256:359b5f2af41c017f775a6c0aaf215d3636160054005b8b31f1e74be9df5ee4fd",
+                "sha256:6ceeb92443cbcf756ee19336d1db4d36bc6d24aac673ffb76b91241af681caf7",
+                "sha256:c321bb67408ac4816be8f2706230677a5c50444c1a147bc5ef6e9f8745ce17f8",
+                "sha256:ce8ec7622542f7ce50202fdee06fff3b46f63a593dedd108536ce15276efc950",
+                "sha256:f08e286da2e9ecdd58f520cf2da0d59f0a27b1995796b4c03e9547abc0f23176",
+                "sha256:d07df243cee9041da775d3762986e01e51d81c49b24a8a4fdf43dfa2221a7971",
+                "sha256:e7cb8f3e7773171fd06375775191fba6e21ac7c1b062fbc8a537e2019aa088d1",
+                "sha256:fe01a47c258346baa9d4cdf8e40f4f9faeb65bc9c0a2214c38a019b2b5c58552",
+                "sha256:a739238732142fd59cf86f4f4de179a208b4205b524debb3675a9a769870ca79"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2021-12-16T16:59:52.659737869+01:00"
+        }
+    }
+]

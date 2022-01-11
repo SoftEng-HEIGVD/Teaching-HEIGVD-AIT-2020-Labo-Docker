@@ -1,0 +1,4 @@
+    2021/12/29 10:34:20 [INFO] serf: EventMemberJoin: 7f1478001f67 192.168.42.11
+    2021/12/29 10:34:21 [INFO] agent: Received event: member-join
+[WARNING] 362/103424 (200) : Server nodes/s1 is UP, reason: Layer7 check passed, code: 200, check duration: 2ms. 1 active and 0 backup servers online. 0 sessions requeued, 0 total in queue.
+

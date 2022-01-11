@@ -1,0 +1,2 @@
+Container 7f1478001f67 has joined the Serf cluster with the following IP address: 192.168.42.11
+

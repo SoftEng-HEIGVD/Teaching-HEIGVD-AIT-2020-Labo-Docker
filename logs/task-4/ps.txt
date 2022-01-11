@@ -1,0 +1,4 @@
+CONTAINER ID   IMAGE                                          COMMAND   CREATED       STATUS       PORTS                                                                                                                                         NAMES
+4e11d96e3efa   ait-labo4-docker-and-dynamic-scaling_haproxy   "/init"   2 hours ago   Up 2 hours   0.0.0.0:80->80/tcp, :::80->80/tcp, 7373/tcp, 0.0.0.0:1936->1936/tcp, :::1936->1936/tcp, 0.0.0.0:9999->9999/tcp, :::9999->9999/tcp, 7946/tcp   ha
+3ae54d070934   ait-labo4-docker-and-dynamic-scaling_webapp2   "/init"   2 hours ago   Up 2 hours   7373/tcp, 7946/tcp, 0.0.0.0:4001->3000/tcp, :::4001->3000/tcp                                                                                 s2
+7f1478001f67   ait-labo4-docker-and-dynamic-scaling_webapp1   "/init"   3 hours ago   Up 2 hours   7373/tcp, 7946/tcp, 0.0.0.0:4000->3000/tcp, :::4000->3000/tcp                                                                                 s1
